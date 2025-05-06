@@ -1,0 +1,32 @@
+[user]
+	name = Haoxuan (Aaron) Yue
+	email = yuehaoxuanar@yahoo.com.sg
+	username = haoxuany
+[core]
+	editor = nvim
+[color]
+	ui = true
+[alias]
+	st = status
+	ci = commit --verbose
+	co = checkout
+	di = diff
+	dc = diff --cached
+	amend = commit --amend
+	aa = add --all
+	ff = merge --ff-only
+	pullff = pull --ff-only
+	noff = merge --no-ff
+	fa = fetch --all
+	pom = push origin master
+	dh1 = diff HEAD~1
+	b = branch
+	l = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+[push]
+	default = matching
+[merge]
+	tool = nvim -d
+[diff]
+	tool = nvim -d
+[pull]
+	rebase = true
