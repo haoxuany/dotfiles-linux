@@ -5,6 +5,9 @@ Includes:
 + fzf
 + ripgrep
 + neovim
+  - vimtex (for latex)
+    * zathura (pdf viewer)
+    * latexmk
 + tmux
 + bat (cat + highlighting)
 + fd (find)

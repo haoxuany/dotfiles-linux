@@ -1,12 +1,118 @@
 -- Settings
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ','
 
+-- Ignore cases
+vim.o.ignorecase = true
+vim.o.smartcase = true
+-- don't highlight
+vim.o.hlsearch = false
+-- persistent undos
+vim.o.undofile = true
+-- Number
+vim.o.number = true
+-- No mouse
+vim.o.mouse = ''
+-- Mouse support for resizing is completely broken since neovim unfortunately
+-- Splits
+vim.o.splitbelow = true
+vim.o.splitright = true
+-- 80 columns
+vim.o.colorcolumn = '80'
+-- no screwing with buffers
+vim.o.switchbuf = 'useopen' -- is "uselast" also correct?
+-- wildmode completion
+vim.o.wildmode = 'list:longest'
+-- ignore junk
+vim.o.wildignore =
+table.concat({
+  '*.o,*.a,**/.git/*,**/.scm/*,*~,*.pyc,*.out,*.tar,*.gz',
+  '*.jpg,*.png,*.gif,*.pdf,*.swp,**/.hg/*,**/_build/*,**/.cm/*',
+  '.merlin,setup.data,setup.log,**/node_modules/*,*.cmi,*.cmo,*.cmj,*.cmt',
+}, ',')
+-- leave 1 line
+vim.o.scrolloff = 1
+-- no folds
+vim.o.foldmethod = 'manual'
+vim.o.foldenable = false
+-- Default indentation
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = false
+
+-- Keymaps
+-- infinite repeat
+vim.keymap.set('n', '1', '11111')
+-- shift keyboard commands
+vim.keymap.set('n', '2', '@')
+vim.keymap.set('n', '3', '#')
+vim.keymap.set('n', '4', '$')
+vim.keymap.set('n', '5', '%')
+vim.keymap.set('n', '6', '^')
+vim.keymap.set('n', '8', '*')
+-- Quick insert blank line
+vim.keymap.set('n', '<C-j>', 'o<Esc>S<Esc>k')
+vim.keymap.set('n', '<C-k>', 'O<Esc>S<Esc>j')
+-- Sane mappings for window width
+vim.keymap.set('n', '<C-h>', '<C-w><')
+vim.keymap.set('n', '<C-l>', '<C-w>>')
+-- Insert mode completion ergonomics
+-- TODO: revise for completion
+-- TODO: add tab completion for insert mode
+vim.keymap.set('i', '<C-j>', '<C-n>')
+vim.keymap.set('i', '<C-k>', '<C-p>')
+-- Command line mode recall ergonomics
+vim.keymap.set('c', '<C-j>', '<C-n>')
+vim.keymap.set('c', '<C-k>', '<C-p>')
+-- Stop arrow keys to avoid breaking repeat behavior
+vim.keymap.set('', '<Up>', "<Cmd>echo 'Nope'<CR>")
+vim.keymap.set('', '<Down>', "<Cmd>echo 'Nope'<CR>")
+vim.keymap.set('', '<Left>', "<Cmd>echo 'Nope'<CR>")
+vim.keymap.set('', '<Right>', "<Cmd>echo 'Nope'<CR>")
+-- Visual search
+vim.keymap.set('x', '8', '*', { remap = true });
+vim.keymap.set('x', '3', '#', { remap = true });
+-- Clear/Redraw screen
+vim.keymap.set('n', '<leader>l', '<C-l>');
+vim.keymap.set('n', '<leader><leader>', '<C-^>');
+-- + register for interfacing
+vim.keymap.set({'n', 'v'}, '<leader>y', '"+y');
+vim.keymap.set({'n', 'v'}, '<leader>p', '"+p');
+-- Quickfix List
+vim.keymap.set('n', '<leader>q',
+function()
+  for _, win in pairs(vim.fn.getwininfo()) do
+    if win["quickfix"] == 1 then
+      vim.cmd "cclose"
+      return
+    end
+  end
+  if not vim.tbl_isempty(vim.fn.getqflist()) then
+    vim.cmd "copen"
+  end
+end);
+vim.keymap.set('n', '<leader>j', '<Cmd>cnext<CR>');
+vim.keymap.set('n', '<leader>k', '<Cmd>cprev<CR>');
+-- Split windows
+vim.keymap.set('n', '<leader>v', '<Cmd>vnew<CR>');
+vim.keymap.set('n', '<leader>w', '<Cmd>new<CR>');
+-- %% curdir magic
+vim.keymap.set('c', '%%',
+  "getcmdtype() == ':' ? expand('%:h').'/' : '%%'",
+  { expr = true }
+);
+
+
+-- Plugins
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  local out = vim.fn.system({
+    "git", "clone", "--filter=blob:none",
+    "--branch=stable", lazyrepo, lazypath 
+  })
   if vim.v.shell_error ~= 0 then
     vim.api.nvim_echo({
       { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
@@ -48,6 +154,7 @@ require("lazy").setup({
         local actions = require("telescope.actions")
         require("telescope").setup({
           defaults = {
+            -- Rely on ripgrep to do ignores, saner
             mappings =  {
               i = {
                 ["<C-u>"] = false,
@@ -83,6 +190,16 @@ require("lazy").setup({
         highlight = {
           enable = true,
         },
+        indent = {
+          enable = true,
+        },
+      },
+    },
+    -- New Quickfix
+    {
+      'kevinhwang91/nvim-bqf',
+      lazy = false,
+      opts = {
       },
     },
     -- tpope
@@ -111,6 +228,14 @@ require("lazy").setup({
     -- {
     --   'neovim/nvim-lspconfig', tag = 'v1.8.0',
     -- },
+    {
+      "lervag/vimtex",
+      lazy = false,
+      tag = "v2.15",
+      init = function()
+        vim.g.vimtex_view_method = "zathura"
+      end
+    },
   },
   -- Configure any other settings here. See the documentation for more details.
   install = {
