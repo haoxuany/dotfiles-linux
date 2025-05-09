@@ -20,6 +20,9 @@ set -gx EDITOR nvim
 alias vi="nvim"
 alias vim="nvim"
 
+bind \n down-or-search # C-j
+bind \v up-or-search # C-k
+
 # fish shell has no support for cdable vars, which is very annoying
 set -gx CDPATH . "$HOME/.cdpath"
 
