@@ -1,0 +1,34 @@
+{
+    "custom/quicklink1": {
+        "format": " ",
+        "on-click": "firefox",
+        "tooltip-format": "Firefox"
+    }, 
+    "custom/quicklink2": {
+        "format": " ",
+        "on-click": "dolphin",
+        "tooltip-format": "Dolphin"
+    },
+    "custom/quicklink3": {
+        "format": "",
+        "on-click": "firefox --new-tab https://www.youtube.com",
+        "tooltip-format": "Youtube"
+    }, 
+    "custom/quicklink4": {
+        "format": "",
+        "on-click": "emacs",
+        "tooltip-format": "Emacs"
+    }, 
+    "custom/quicklinkempty": {
+    }, 
+    "group/quicklinks": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom/quicklink1",
+            "custom/quicklink2",
+            "custom/quicklink3",
+            "custom/quicklink4",
+            "custom/quicklinkempty"
+        ]
+    }
+}

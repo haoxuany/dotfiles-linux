@@ -21,4 +21,8 @@ Includes:
   - brightnessctl
   - greetd
   - waybar
+    * nerd-fonts (must are probably not necessary)
+    * networkmanager
+    * blueman (bluetooth)
+    * mpd, rmpc
   - rofi-wayland
