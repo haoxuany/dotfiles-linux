@@ -17,3 +17,8 @@ Includes:
 + emacs
 + firacode (font: https://github.com/tonsky/FiraCode)
 + mods (funny command line ai thing)
++ hyprland
+  - brightnessctl
+  - greetd
+  - waybar
+  - rofi-wayland
