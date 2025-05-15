@@ -29,8 +29,8 @@
     // Power Menu
     "custom/exit": {
         "format": "",
-        "tooltip-format": "Powermenu",
-        "on-click": "shutdown now",
+        "tooltip-format": "Power",
+        "on-click": "~/.config/rofi/powermenu.sh",
         "tooltip": false
     },
 
