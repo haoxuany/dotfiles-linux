@@ -19,6 +19,11 @@
         "on-click": "emacs",
         "tooltip-format": "Emacs"
     }, 
+    "custom/quicklink5": {
+        "format": "󱀣",
+        "on-click": "firefox --private-window",
+        "tooltip-format": "Private Browsing"
+    }, 
     "custom/quicklinkempty": {
     }, 
     "group/quicklinks": {
@@ -28,6 +33,7 @@
             "custom/quicklink2",
             "custom/quicklink3",
             "custom/quicklink4",
+            "custom/quicklink5",
             "custom/quicklinkempty"
         ]
     }
