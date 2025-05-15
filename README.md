@@ -26,3 +26,4 @@ Includes:
     * blueman (bluetooth)
     * mpd, rmpc
   - rofi-wayland
+  - hyprpaper
