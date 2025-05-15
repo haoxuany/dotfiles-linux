@@ -21,7 +21,7 @@ Includes:
   - brightnessctl
   - greetd
   - waybar
-    * nerd-fonts (must are probably not necessary)
+    * nerd-fonts: NotoSans
     * networkmanager
     * blueman (bluetooth)
     * mpd, rmpc

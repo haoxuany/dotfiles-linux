@@ -14,7 +14,7 @@ configuration {
 
 /*****----- Global Properties -----*****/
 * {
-    font:                        "Fira Sans 11";
+    font:                        "NotoSans Nerd Font 11";
     background:                  #131D1F;
     background-alt:              #183A43;
     foreground:                  #FFFFFF;
@@ -134,7 +134,7 @@ element {
     cursor:                      pointer;
 }
 element-text {
-    font:                        "Fira Sans Semibold 32";
+    font:                        "NotoSans Nerd Font 32";
     background-color:            transparent;
     text-color:                  inherit;
     cursor:                      inherit;

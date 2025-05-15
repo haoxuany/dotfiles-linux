@@ -21,7 +21,7 @@ configuration {
 
 /*****----- Global Properties -----*****/
 * {
-    font:                        "Fira Sans 11";
+    font:                        "NotoSans Nerd Font 11";
     background:                  #131D1F;
     background-alt:              #183A43;
     foreground:                  #FFFFFF;
