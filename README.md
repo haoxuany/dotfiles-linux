@@ -28,3 +28,4 @@ Includes:
   - rofi-wayland
   - hyprpaper
   - xdg-desktop-portal-hyprland
+  - grim, slurp, swappy, wl-clipboard (screenshot)
