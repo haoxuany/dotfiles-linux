@@ -42,8 +42,8 @@
 
     // Clock
     "clock": {
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+        "format": "{:%I:%M}",
+        "tooltip-format": "<big>{:%B %d, %Y}</big>\n<tt><small>{calendar}</small></tt>",
     },
 
     // System

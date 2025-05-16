@@ -13,6 +13,7 @@ no=''
 # Rofi CMD
 rofi_cmd() {
 	rofi -dmenu \
+		-hover-select -me-select-entry '' -me-accept-entry MousePrimary \
 		-p "Power" \
 		-theme $HOME/.config/rofi/powermenu.rasi
 }
@@ -25,6 +26,7 @@ confirm_cmd() {
 		-theme-str 'element-text {horizontal-align: 0.5;}' \
 		-theme-str 'textbox {horizontal-align: 0.5;}' \
 		-dmenu \
+		-hover-select -me-select-entry '' -me-accept-entry MousePrimary \
 		-p 'Confirmation' \
 		-mesg 'Are you Sure?' \
 		-theme $HOME/.config/rofi/powermenu.rasi
