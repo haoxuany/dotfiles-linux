@@ -27,3 +27,4 @@ Includes:
     * mpd, rmpc
   - rofi-wayland
   - hyprpaper
+  - xdg-desktop-portal-hyprland

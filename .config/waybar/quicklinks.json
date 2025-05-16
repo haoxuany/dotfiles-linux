@@ -6,7 +6,7 @@
     }, 
     "custom/quicklink2": {
         "format": " ",
-        "on-click": "dolphin",
+        "on-click": "hyprctl dispatch exec [float] -- dolphin",
         "tooltip-format": "Dolphin"
     },
     "custom/quicklink3": {

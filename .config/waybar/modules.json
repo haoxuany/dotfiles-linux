@@ -55,13 +55,13 @@
     // CPU
     "cpu": {
         "format": "C {usage}%",
-        "on-click": "kitty -e htop"
+        "on-click": "hyprctl dispatch exec [float] -- kitty -e htop"
     },
 
     // Memory
     "memory": {
         "format": "M {}% ",
-        "on-click": "kitty -e htop"
+        "on-click": "hyprctl dispatch exec [float] -- kitty -e htop"
     },
 
     "hyprland/language": {
@@ -96,7 +96,7 @@
         "tooltip-format-ethernet": "  {ifname} ({ipaddr}/{cidr})",
         "tooltip-format-disconnected": "Disconnected",
         "max-length": 50,
-        "on-click": "kitty -e nmtui"
+        "on-click": "hyprctl dispatch exec [float] -- kitty -e nmtui"
     },
 
     // Battery
@@ -133,7 +133,7 @@
             "car": "",
             "default": ["", " ", " "]
         },
-        "on-click": "pavucontrol"
+        "on-click": "hyprctl dispatch exec [float] -- pavucontrol"
     },
 
     // Bluetooth
@@ -141,7 +141,7 @@
         "format-disabled": "",
         "format-off": "",
         "interval": 30,
-        "on-click": "blueman-manager",
+        "on-click": "hyprctl dispatch exec [float] -- blueman-manager",
         "format-no-controller": ""
     },
 
