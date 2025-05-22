@@ -24,6 +24,11 @@
         "on-click": "firefox --private-window",
         "tooltip-format": "Private Browsing"
     }, 
+    "custom/quicklink6": {
+        "format": "",
+        "on-click": "~/.config/hypr/toggle-spotify.sh",
+        "tooltip-format": "Spotify"
+    }, 
     "custom/quicklinkempty": {
     }, 
     "group/quicklinks": {
@@ -34,6 +39,7 @@
             "custom/quicklink3",
             "custom/quicklink4",
             "custom/quicklink5",
+            "custom/quicklink6",
             "custom/quicklinkempty"
         ]
     }
