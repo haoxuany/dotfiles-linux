@@ -29,6 +29,11 @@
         "on-click": "~/.config/hypr/toggle-spotify.sh",
         "tooltip-format": "Spotify"
     }, 
+    "custom/quicklink7": {
+        "format": "",
+        "on-click": "betterbird",
+        "tooltip-format": "Thunderbird"
+    }, 
     "custom/quicklinkempty": {
     }, 
     "group/quicklinks": {
@@ -40,6 +45,7 @@
             "custom/quicklink4",
             "custom/quicklink5",
             "custom/quicklink6",
+            "custom/quicklink7",
             "custom/quicklinkempty"
         ]
     }
