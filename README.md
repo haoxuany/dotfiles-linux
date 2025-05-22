@@ -6,6 +6,7 @@ Includes:
 + ripgrep
 + neovim
   - vimtex (for latex)
+    * texlab (completion)
     * zathura (pdf viewer)
     * latexmk
 + tmux
