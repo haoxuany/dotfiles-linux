@@ -31,3 +31,7 @@ Includes:
   - grim, slurp, swappy, wl-clipboard (screenshot)
   - hyprsunset
   - hyprpolkitagent
++ fcitx5
+  - fcitx5-configtool
+  - fcitx5-rime
+  - fcitx5-mozc-ut
