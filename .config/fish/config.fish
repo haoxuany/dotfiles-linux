@@ -64,3 +64,7 @@ end
 test -r "$HOME/.opam/opam-init/init.fish" && \
     source "$HOME/.opam/opam-init/init.fish" > /dev/null 2> /dev/null; or true
 # END opam configuration
+# Haskell/GHCup/Agda
+fish_add_path "$HOME/.ghcup/bin"
+fish_add_path "$HOME/.cabal/bin"
+fish_add_path "$HOME/.local/bin"

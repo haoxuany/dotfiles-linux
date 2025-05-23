@@ -380,7 +380,80 @@ require("lazy").setup({
           end,
         })
       end
-    }
+    },
+    -- Agda
+    {
+      'agda/cornelis',
+      name = 'cornelis',
+      ft = 'agda',
+      build = 'stack install',
+      dependencies = {
+        'neovimhaskell/nvim-hs.vim',
+        'kana/vim-textobj-user',
+        'liuchengxu/vim-which-key',
+      },
+      version = '*',
+      init = function()
+        vim.api.nvim_create_autocmd("FileType", {
+          pattern = "agda",
+          callback = function(event)
+            vim.o.timeoutlen = 500
+
+            vim.keymap.set("i", "\\",
+            "<C-O>:silent! call cornelis#prompt_input()<CR>",
+            { buffer = event.buf , silent = true })
+
+            vim.keymap.set("n", "<Leader>m",
+            ":CornelisLoad<CR>:CornelisQuestionToMeta<CR>",
+            { buffer = event.buf })
+
+            vim.keymap.set("n", "gd",
+            ":CornelisGoToDefinition<CR>",
+            { buffer = event.buf })
+
+            vim.keymap.set("n", "<Leader>j",
+            function()
+              vim.cmd("CornelisNextGoal")
+              -- For some reason, doing this doesn't work.
+              -- vim.cmd("normal f ")
+            end,
+            { buffer = event.buf })
+
+            vim.keymap.set("n", "<Leader>k",
+            function()
+              vim.cmd("CornelisPrevGoal")
+              -- For some reason, doing this doesn't work.
+              -- vim.cmd("normal f ")
+            end,
+            { buffer = event.buf })
+
+            vim.keymap.set("n", "<Leader>g",
+            ":CornelisGive<CR>",
+            { buffer = event.buf })
+
+            vim.keymap.set("n", "<Leader>s",
+            ":CornelisMakeCase<CR>",
+            { buffer = event.buf })
+
+            vim.keymap.set("n", "<Leader>r",
+            ":CornelisRefine<CR>",
+            { buffer = event.buf })
+
+            vim.keymap.set("n", "<Leader>a",
+            ":CornelisAuto<CR>",
+            { buffer = event.buf })
+
+            vim.keymap.set("n", "<Leader>t",
+            ":CornelisTypeContextInfer<CR>",
+            { buffer = event.buf })
+          end,
+        })
+        vim.api.nvim_create_autocmd("QuitPre", {
+          pattern = "*.agda",
+          command = "CornelisCloseInfoWindows",
+        })
+      end
+    },
   },
   -- Configure any other settings here. See the documentation for more details.
   install = {
