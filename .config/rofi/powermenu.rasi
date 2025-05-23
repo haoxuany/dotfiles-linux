@@ -1,18 +1,7 @@
-/**
- *
- * Author : Aditya Shakya (adi1090x)
- * Github : @adi1090x
- * 
- * Rofi Theme File
- * Rofi Version: 1.7.3
- **/
-
-/*****----- Configuration -----*****/
 configuration {
     show-icons:                 false;
 }
 
-/*****----- Global Properties -----*****/
 * {
     font:                        "NotoSans Nerd Font 11";
     background:                  #131D1F;
@@ -21,81 +10,96 @@ configuration {
     selected:                    #649094;
     active:                      #E9CC9D;
     urgent:                      #FEA861;
+
+    /* Tune according to resolution */
+    box-spacing:                 50px;
+    box-margin:                  370px 350px;
+    message-margin:              0px 350px;
+    inputbar-spacing:            0px;
+    list-spacing:                20px;
+    general-padding:             20px;
+    element-padding:             55px 10px;
+    element-radius:              20px;
+    general-radius:              100%;
+    element-font:                "NotoSans Nerd Font 25";
 }
 
-/*
-USE_BUTTONS=YES
-*/
-
-/*****----- Main Window -----*****/
 window {
+    /* properties for window widget */
     transparency:                "real";
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       1000px;
+    width:                       1366px;
     x-offset:                    0px;
     y-offset:                    0px;
 
+    /* properties for all widgets */
+    enabled:                     true;
+    margin:                      0px;
     padding:                     0px;
     border:                      0px solid;
-    border-radius:               24px;
+    border-radius:               0px;
     border-color:                @selected;
     cursor:                      "default";
     background-color:            @background;
 }
 
-/*****----- Main Box -----*****/
 mainbox {
+    enabled:                     true;
+    spacing:                     var(box-spacing);
+    margin:                      0px;
+    padding:                     var(box-margin);
+    border:                      0px solid;
+    border-radius:               0px;
+    border-color:                @selected;
     background-color:            transparent;
-    orientation:                 horizontal;
-    children:                    [ "imagebox", "listview" ];
+    children:                    [ "message", "listview" ];
 }
 
-/*****----- Imagebox -----*****/
-imagebox {
-    spacing:                     20px;
-    padding:                     20px;
-    background-color:            transparent;
-    background-image:            url("~/.config/rofi/shutdown.png", height);
-    children:                    [ "inputbar", "dummy", "message" ];
-}
-
-/*****----- User -----*****/
-userimage {
-    margin:                      0px 0px;
-    border:                      10px;
-    border-radius:               10px;
-    border-color:                @background-alt;
-    background-color:            transparent;
-    background-image:            url("~/.config/rofi/shutdown.png", height);
-}
-
-/*****----- Inputbar -----*****/
 inputbar {
-    padding:                     15px;
-    border-radius:               100%;
-    background-color:            @urgent;
+    enabled:                     true;
+    spacing:                     var(inputbar-spacing);
+    margin:                      0px;
+    padding:                     0px;
+    border:                      0px;
+    border-radius:               0px;
+    border-color:                @selected;
+    background-color:            transparent;
     text-color:                  @foreground;
-    children:                    [ "dummy", "prompt", "dummy"];
+    children:                    [ "dummy", "textbox-prompt-colon", "prompt", "dummy"];
 }
 
 dummy {
     background-color:            transparent;
 }
 
+textbox-prompt-colon {
+    enabled:                     true;
+    expand:                      false;
+    str:                         "SYSTEM";
+    padding:                     var(general-padding);
+    border-radius:               var(general-radius);
+    background-color:            @urgent;
+    text-color:                  @background;
+}
 prompt {
-    background-color:            inherit;
-    text-color:                  inherit;
+    enabled:                     true;
+    padding:                     var(general-padding);
+    border-radius:               var(general-radius);
+    background-color:            @active;
+    text-color:                  @background;
 }
 
 /*****----- Message -----*****/
 message {
     enabled:                     true;
-    margin:                      0px;
-    padding:                     15px;
-    border-radius:               100%;
-    background-color:            @active;
+    margin:                      var(message-margin);
+    padding:                     var(general-padding);
+    border:                      0px;
+    border-radius:               var(general-radius);
+    border-color:                @selected;
+    background-color:            @background-alt;
     text-color:                  @foreground;
 }
 textbox {
@@ -103,13 +107,24 @@ textbox {
     text-color:                  inherit;
     vertical-align:              0.5;
     horizontal-align:            0.5;
+    placeholder-color:           @foreground;
+    blink:                       true;
+    markup:                      true;
+}
+error-message {
+    padding:                     var(general-padding);
+    border:                      0px solid;
+    border-radius:               var(general-radius);
+    border-color:                @selected;
+    background-color:            @background;
+    text-color:                  @foreground;
 }
 
 /*****----- Listview -----*****/
 listview {
     enabled:                     true;
-    columns:                     3;
-    lines:                       2;
+    columns:                     5;
+    lines:                       1;
     cycle:                       true;
     dynamic:                     true;
     scrollbar:                   false;
@@ -118,23 +133,31 @@ listview {
     fixed-height:                true;
     fixed-columns:               true;
     
-    spacing:                     20px;
-    margin:                      20px;
+    spacing:                     var(list-spacing);
+    margin:                      0px;
+    padding:                     0px;
+    border:                      0px solid;
+    border-radius:               0px;
+    border-color:                @selected;
     background-color:            transparent;
+    text-color:                  @foreground;
     cursor:                      "default";
 }
 
-/*****----- Elements -----*****/
 element {
     enabled:                     true;
-    padding:                     40px 10px;
-    border-radius:               100%;
+    spacing:                     0px;
+    margin:                      0px;
+    padding:                     var(element-padding);
+    border:                      0px solid;
+    border-radius:               var(element-radius);
+    border-color:                @selected;
     background-color:            @background-alt;
     text-color:                  @foreground;
     cursor:                      pointer;
 }
 element-text {
-    font:                        "NotoSans Nerd Font 32";
+    font:                        var(element-font);
     background-color:            transparent;
     text-color:                  inherit;
     cursor:                      inherit;
