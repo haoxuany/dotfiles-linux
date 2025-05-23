@@ -317,8 +317,7 @@ require("lazy").setup({
       'neovim/nvim-lspconfig', tag = 'v2.1.0',
       config = function()
         vim.lsp.enable('texlab')
-        -- vim.lsp.config('texlab', {
-        -- })
+        vim.lsp.enable('coq-lsp') -- Integration is super cursed at the moment
       end
     },
 
@@ -339,6 +338,49 @@ require("lazy").setup({
         })
       end
     },
+    -- Coq
+    {
+      "whonore/Coqtail",
+      init = function()
+        vim.g.coqtail_nomap = 1
+        vim.api.nvim_create_autocmd("FileType", {
+          pattern = "coq",
+          callback = function(event)
+            vim.keymap.set("n", "<C-c>",
+            "<Plug>CoqInterrupt",
+            { buffer = event.buf })
+
+            vim.keymap.set("n", "<Leader>j",
+            "<Plug>CoqNext",
+            { buffer = event.buf })
+
+            vim.keymap.set("n", "<Leader>k",
+            "<Plug>CoqUndo",
+            { buffer = event.buf })
+
+            vim.keymap.set("n", "<Leader>l",
+            "<Plug>CoqToLine",
+            { buffer = event.buf })
+
+            vim.keymap.set("n", "[g",
+            "<Plug>CoqGotoGoalPrevStart",
+            { buffer = event.buf })
+
+            vim.keymap.set("n", "]g",
+            "<Plug>CoqGotoGoalNextStart",
+            { buffer = event.buf })
+
+            vim.keymap.set("n", "<Leader>c",
+            "<Plug>CoqCheck",
+            { buffer = event.buf })
+
+            vim.keymap.set("n", "<Leader>p",
+            "<Plug>CoqPrint",
+            { buffer = event.buf })
+          end,
+        })
+      end
+    }
   },
   -- Configure any other settings here. See the documentation for more details.
   install = {
