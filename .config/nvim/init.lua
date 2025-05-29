@@ -94,8 +94,8 @@ vim.keymap.set('n', '<leader>v', '<Cmd>vnew<CR>');
 vim.keymap.set('n', '<leader>w', '<Cmd>new<CR>');
 -- %% curdir magic
 vim.keymap.set('c', '%%',
-  "getcmdtype() == ':' ? expand('%:h').'/' : '%%'",
-  { expr = true }
+"getcmdtype() == ':' ? expand('%:h').'/' : '%%'",
+{ expr = true }
 );
 
 
@@ -140,7 +140,7 @@ require("lazy").setup({
       'nvim-telescope/telescope-fzf-native.nvim',
       lazy = false,
       build = 'make'
-     },
+    },
     {
       'nvim-telescope/telescope.nvim', tag = '0.1.8',
       dependencies = {
@@ -163,7 +163,7 @@ require("lazy").setup({
                 ["<C-j>"] = actions.move_selection_next,
                 ["<C-k>"] = actions.move_selection_previous,
                 ["<C-d>"] = actions.delete_buffer + actions.move_to_bottom,
-		["<Esc>"] = actions.close,
+                ["<Esc>"] = actions.close,
               },
             },
           },
@@ -404,7 +404,10 @@ require("lazy").setup({
             { buffer = event.buf , silent = true })
 
             vim.keymap.set("n", "<Leader>m",
-            ":CornelisLoad<CR>:CornelisQuestionToMeta<CR>",
+            function()
+              vim.cmd("CornelisLoad")
+              vim.cmd("CornelisQuestionToMeta")
+            end,
             { buffer = event.buf })
 
             vim.keymap.set("n", "gd",
